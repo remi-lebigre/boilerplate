@@ -1,0 +1,14 @@
+# Node
+node_modules
+
+# Webpack
+dist
+
+# IDE
+.idea
+
+# Code
+tmp
+
+# Environment variables
+.env

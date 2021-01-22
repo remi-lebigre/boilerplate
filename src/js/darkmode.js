@@ -1,0 +1,32 @@
+import Cookies from "./cookies"
+
+class Darkmode {
+  DARKMODE_COOKIE = 'rem_darkmode_cookie'
+  body = document.querySelector('body')
+  ctas = document.querySelectorAll('.darkmode_cta')
+  cookie = new Cookies()
+
+  constructor () {
+    console.debug('New darkmode')
+
+    this.ctas.forEach(cta => cta.addEventListener('click', this.toggle))
+    const darkmode_enabled = this.cookie.get(this.DARKMODE_COOKIE)
+    !darkmode_enabled ? this.unset() : this.set()
+  }
+
+  toggle = _ => {
+    const darkmode_enabled = this.cookie.get(this.DARKMODE_COOKIE)
+    darkmode_enabled ? this.unset() : this.set()
+  }
+  set = _ => {
+    this.body.setAttribute('darkmode', true)
+    this.cookie.set(this.DARKMODE_COOKIE, true, 10)
+  }
+  unset = _ => {
+    this.body.removeAttribute('darkmode')
+    this.cookie.set(this.DARKMODE_COOKIE, false, 10)
+  }
+}
+
+
+export default Darkmode

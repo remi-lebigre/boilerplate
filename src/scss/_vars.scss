@@ -1,0 +1,20 @@
+// Declare custom properties
+// Example:
+//
+//:root {
+//  --dark: #161616;
+//}
+//
+//$acceleration: cubic-bezier(.9, 0, .1, 1);
+$dark: #141414;
+
+:root {
+  --dark: #{$dark};
+}
+
+$container-margin-y: 3em;
+$grid-gutter: 25px;
+$container-margin: $grid-gutter*2;
+$mobile-width: 760px;
+$z-index-cursor: 1000;
+$timing: cubic-bezier(.5, 0, 0, 1);

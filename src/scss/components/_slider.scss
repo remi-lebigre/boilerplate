@@ -1,0 +1,17 @@
+.slider {
+  margin: 3em 0 6em;
+  padding-left: $grid-gutter;
+  padding-right: $grid-gutter;
+  overflow: hidden;
+
+  &_wrap {
+    display: flex;
+    align-items: center;
+    transition: 1s $timing transform;
+  }
+}
+
+.slide {
+  position: relative;
+  flex: 1 0 auto;
+}

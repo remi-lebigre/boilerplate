@@ -1,0 +1,102 @@
+.debug-grid {
+  display: none;
+
+  &-cta {
+    z-index: $z-index-cursor - 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: $container-margin;
+    height: $container-margin-y;
+  }
+
+  &--show {
+    display: block;
+  }
+
+  position: fixed !important;
+  z-index: 99999;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: calc(100% - #{$container-margin} * 2);
+
+  .row {
+    height: 100%;
+
+    .col-1, .col-m-1, .col-3, .col-m-3, .col-6, .col-m-6 {
+      height: 100%;
+      background-color: rgb(243, 98, 92, .05);
+    }
+  }
+}
+
+@include query-mobile {
+  .debug-grid {
+    width: calc(100% - #{$grid-gutter} * 2);
+
+    &-cta {
+      width: 2em;
+      height: 2em;
+    }
+  }
+}
+
+$columns_count: 12;
+@for $i from 1 through $columns_count {
+  $col-width: calc(100% / #{$columns_count/$i} - #{$grid-gutter});
+  $width: calc((100% + #{$grid-gutter}) / #{$columns_count/$i} - #{$grid-gutter});
+  $padding: calc((100% + #{$grid-gutter}) / #{$columns_count/$i});
+  $negative-padding: calc((-100% - #{$grid-gutter}) / #{$i});
+  $gutter: $grid-gutter/2;
+
+  @include query-desktop {
+    .col-#{$i} {
+      width: $col-width;
+      margin-left: $gutter;
+      margin-right: $gutter;
+    }
+    .col-offset-#{$i} {
+      margin-left: calc(100% / #{$columns_count/$i} + #{$gutter}) !important;
+    }
+    .padding-left-#{$i} {
+      padding-left: $padding;
+    }
+    .margin-left-#{$i} {
+      margin-left: $padding;
+    }
+    .width-#{$i} {
+      width: $width;
+    }
+    .indent-negative-#{$i} {
+      text-indent: $negative-padding;
+    }
+  }
+}
+
+$mobile_columns_count: 4;
+@include query-mobile {
+  @for $i from 1 through $mobile_columns_count {
+    $col-width: calc(100% / #{$mobile_columns_count/$i} - #{$grid-gutter});
+    $width: calc((100% + #{$grid-gutter}) / #{$mobile_columns_count/$i} - #{$grid-gutter});
+    $padding: calc((100% + #{$grid-gutter}) / #{$mobile_columns_count/$i});
+    $negative-padding: calc((-100% - #{$grid-gutter}) / #{$i});
+    $gutter: $grid-gutter/2;
+
+    .padding-left-m-#{$i} {
+      padding-left: $padding;
+    }
+    .col-m-#{$i} {
+      width: $col-width;
+      margin-left: $gutter;
+      margin-right: $gutter;
+    }
+    .col-m-offset-#{$i} {
+      margin-left: calc(100% / #{$mobile_columns_count/$i} + #{$gutter}) !important;
+    }
+    .indent-negative-m-#{$i} {
+      text-indent: $negative-padding;
+    }
+  }
+}

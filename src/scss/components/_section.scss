@@ -1,0 +1,9 @@
+section {
+  margin-bottom: 20em;
+}
+
+@include query-mobile {
+  section {
+    margin-bottom: 3em;
+  }
+}
